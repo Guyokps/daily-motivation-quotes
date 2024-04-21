@@ -2,13 +2,19 @@ import os
 import random
 from twilio.rest import Client
 
-# Get Twilio credentials and WhatsApp number from environment variables
+# Get Twilio credentials and WhatsApp numbers from environment variables
 account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
 auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
-whatsapp_to = os.environ.get('WHATSAPP_TO_NUMBER')
+whatsapp_to_1 = os.environ.get('WHATSAPP_TO_NUMBER_1')
+whatsapp_to_2 = os.environ.get('WHATSAPP_TO_NUMBER_2')
 
 # Twilio's WhatsApp number
 whatsapp_from = 'whatsapp:+14155238886'
+
+# Print environment variables to check their values
+print(f"TWILIO_ACCOUNT_SID: {account_sid}")
+print(f"WHATSAPP_TO_NUMBER_1: {whatsapp_to_1}")
+print(f"WHATSAPP_TO_NUMBER_2: {whatsapp_to_2}")
 
 # List of messages
 messages_list = [
@@ -26,14 +32,20 @@ random_message = random.choice(messages_list)
 # Initialize Twilio client
 client = Client(account_sid, auth_token)
 
-# Send WhatsApp message
+# Send WhatsApp messages
 try:
-    message = client.messages.create(
+    message_1 = client.messages.create(
         body=random_message,
         from_=whatsapp_from,
-        to=whatsapp_to
+        to=whatsapp_to_1
     )
-    print(f"Message sent successfully. SID: {message.sid}")
+    message_2 = client.messages.create(
+        body=random_message,
+        from_=whatsapp_from,
+        to=whatsapp_to_2
+    )
+
+    print(f"Messages sent successfully. SID 1: {message_1.sid}, SID 2: {message_2.sid}")
 
 except Exception as e:
-    print(f"Error sending message: {e}")
+    print(f"Error sending messages: {e}")
