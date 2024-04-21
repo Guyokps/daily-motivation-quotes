@@ -11,11 +11,6 @@ whatsapp_to_2 = os.environ.get('WHATSAPP_TO_NUMBER_2')
 # Twilio's WhatsApp number
 whatsapp_from = 'whatsapp:+14155238886'
 
-# Print environment variables to check their values
-print(f"TWILIO_ACCOUNT_SID: {account_sid}")
-print(f"WHATSAPP_TO_NUMBER_1: {whatsapp_to_1}")
-print(f"WHATSAPP_TO_NUMBER_2: {whatsapp_to_2}")
-
 # List of messages
 messages_list = [
     "תתרכזי בשיט שלך, קיפ גוין אוהב אותכם - סמולקין",
