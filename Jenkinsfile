@@ -4,10 +4,8 @@ pipeline {
     stages {
         stage('Executing the python file') {
             steps {
-                // Use the sh step to execute shell commands
-                script {
-                    sh "python C:\\DevOps\\WhatsappJob\\main.py"
-                }
+                // Use the bat step to execute Windows batch commands
+                bat "python C:\\DevOps\\WhatsappJob\\main.py"
             }
         }
     }
